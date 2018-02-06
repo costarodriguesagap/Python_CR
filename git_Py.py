@@ -5,7 +5,7 @@ if __name__ == "__main__":
   while True:
     rc = 0
     user_git = str(Utilitarios.get_input("User do Git : "))
-    pass_git = str(Utilitarios.get_input("Password Git : "))
+    pass_git = str(Utilitarios.get_input_pass("Password Git : "))
     rep_loc = str(Utilitarios.get_input("Indicar caminho para pasta Local : "))
     rep_rem = ""
     out_scan=[]
@@ -25,7 +25,6 @@ if __name__ == "__main__":
       print("-------------------------------------------")
     if rc == 0:
       out = Directorio.scan_dir(rep_loc)
-      print (out)
       if out[0]:
         out_scan = out[1]
       print("-------------------------------------------")
