@@ -4,7 +4,9 @@ if __name__ == "__main__":
 
   while True:
     rc = 0
-    rep_loc = str(Utilitarios.get_input("Indicar caminho para repositorio Local : "))
+    user_git = str(Utilitarios.get_input("User do Git : "))
+    pass_git = str(Utilitarios.get_input("Password Git : "))
+    rep_loc = str(Utilitarios.get_input("Indicar caminho para pasta Local : "))
     rep_rem = ""
     out_scan=[]
     project = ""
@@ -13,7 +15,10 @@ if __name__ == "__main__":
       Directorio.change_dir(rep_loc)
       print("-------------------------------------------")
     if rc == 0:
-      rep_rem = str(Utilitarios.get_input("Indicar caminho para repositorio Remoto : "))
+      rep_rem = str(Utilitarios.get_input("Indicar URL repositorio Remoto : "))
+      ini_rep_rem = rep_rem[:rep_rem.find("//git")  + 2]
+      fim_rep_rem = rep_rem[rep_rem.find("//git")  + 2:]
+      rep_rem = ini_rep_rem + user_git + ":" + pass_git + "@" + fim_rep_rem
       cmd = "git clone "+rep_rem
       print("\nComando >> "+cmd+'\n')
       rc = Utilitarios.cmd_exec(cmd, True)
