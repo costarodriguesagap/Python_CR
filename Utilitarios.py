@@ -48,6 +48,7 @@ def cmd_pip(str_cmd,flag_print):
     path_python = os.path.split(sys.executable)
     path = path_python[0]+'\Scripts' ## aponta para a pasta \Scripts do python para executar comandos pip
     Directorio.change_dir(path)
+    
     return cmd_exec(str_cmd,flag_print)
 
 def cmd_exec(str_cmd,flag_print):
