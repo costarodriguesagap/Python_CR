@@ -21,8 +21,10 @@ if __name__ == "__main__":
     f_res = open("resultado1.txt",'w')
     obtem_arquivos(path_ini,f_res)
     f_res.close()
+    
+    cmd ="start "+diract+"\\resultado1.txt"
+    Utilitarios.cmd_exec(cmd,False)
   except:
     print("Erro na abertura do ficheiro ....")
     
-  cmd ="start "+diract+"\\resultado1.txt"
-  Utilitarios.cmd_exec(cmd,False)
+
