@@ -1,4 +1,4 @@
-import Utilitarios
+import Utilitarios, platform, os
 
 loop = True
 
@@ -13,6 +13,8 @@ if __name__ == "__main__":
         print("----- Opcao 3 - Desinstalar Modulo ---------------")
         print("----- Opcao 4 - Consultar Modulos Instalados -----")
         print("----- Opcao 5 - Executar comando PIP (ADHOC) -----")
+        print("----- Opcao 6 - Consultar Versão do Python -------")
+        print("----- Opcao 7 - Consultar Documentação Modulos ---")
         opcao_res = int(Utilitarios.get_input("\nInsira a sua Opcao: "))
         
         if opcao_res == 1:
@@ -44,8 +46,22 @@ if __name__ == "__main__":
 
         if opcao_res == 5:
             Utilitarios.cmd_pip(str(Utilitarios.get_input("Insira o comando: ")), True)
+
+        if opcao_res == 6:
+            print("\nVersão Python: " + platform.python_version())
+
+        if opcao_res == 7:
+            modulo = str(Utilitarios.get_input("Indique o Modulo a Consultar: "))
+
+            cmd_import = "import " + modulo
+            cmd_cod  = "help(" + modulo + ")"
+            exec cmd_import
+            exec cmd_cod
+
             
-        control = Utilitarios.get_input("Pretende Continuar?: ('S' - Sim ou 'N' - Não) \nR:")
+        control = Utilitarios.get_input("\nPretende Continuar?: ('S' - Sim ou 'N' - Não) \nR:")
 
         if (control.upper() == "N"):
             loop = False
+
+        os.system("cls")
