@@ -26,5 +26,3 @@ if __name__ == "__main__":
     Utilitarios.cmd_exec(cmd,False)
   except:
     print("Erro na abertura do ficheiro ....")
-    
-
