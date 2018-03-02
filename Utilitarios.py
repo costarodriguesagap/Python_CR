@@ -52,7 +52,7 @@ def cmd_pip(str_cmd,flag_print):
     return cmd_exec(str_cmd,flag_print)
 
 def cmd_exec(str_cmd,flag_print):
-    
+    res = ""
     """ Executa comandos no promt:
            > str_cmd    - Comando a ser executado;
            > flag_print - Flag que controla impressão do resultado da execução do comando
@@ -60,14 +60,19 @@ def cmd_exec(str_cmd,flag_print):
     
     proc = Popen(str_cmd , shell=True, stdout=PIPE, stderr=PIPE)
     out, err = proc.communicate()
-    if flag_print:
-        if platform.python_version()[:1] >= '3':
-            print(out.decode(encoding='windows-1252'))
-        else:
-            print(out)
+
+    if platform.python_version()[:1] >= '3':
+        res += out.decode(encoding='windows-1252')
+    else:
+        res += out
+
     if err != '':
         if platform.python_version()[:1] >= '3':
-            print(err.decode(encoding='windows-1252'))
+            res += err.decode(encoding='windows-1252')
         else:
-            print(err)
-    return proc.returncode
+            res += err
+            
+    if flag_print:
+        print(res)
+        
+    return [proc.returncode,res]
